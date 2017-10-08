@@ -5,18 +5,38 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Matching_Images_Game"
         mc:Ignorable="d"
-        Title="Парні картинки" Height="350" Width="461.842">
+        Title="Парні картинки" Height="350" Width="461.842" Icon="matching-icon.ico">
     <Grid>
-        <GroupBox x:Name="groupBox" Header="Меню" HorizontalAlignment="Left" VerticalAlignment="Top" Height="71.644" Width="444.368" Margin="9.474,0,0,0">
-            <Grid Margin="0,0,-2,-12.96">
-                <Label x:Name="label" Content="Розмірність ігрового поля:" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                <Label x:Name="label1" Content="Затримка картинок при запуску:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,23.25,0,0"/>
-                <Button x:Name="button" Content="Запустити" HorizontalAlignment="Left" Margin="335.263,6,0,0" VerticalAlignment="Top" Width="75"/>
-                <TextBox x:Name="textBox" HorizontalAlignment="Left" Margin="187.89,28.25,0,16.184" TextWrapping="Wrap" Text="" Width="73.983"/>
-                <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="187.89,6.04,0,0" VerticalAlignment="Top" Width="73.983" Height="17.21"/>
+        <GroupBox x:Name="groupBox" Header="Меню" HorizontalAlignment="Left" VerticalAlignment="Top" Height="85.644" Width="444.368">
+            <Grid Margin="0,0,-2,-22.96">
+                <Label x:Name="labeSize" Content="Розмірність поля:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,4,0,0"/>
+                <ComboBox x:Name="fieldSize" HorizontalAlignment="Left" Margin="123.86,4,0,0" VerticalAlignment="Top" Width="77.177" SelectionChanged="fieldSize_SelectionChanged">
+                    <ComboBoxItem IsSelected="True">2</ComboBoxItem>
+                    <ComboBoxItem>4</ComboBoxItem>
+                    <ComboBoxItem>6</ComboBoxItem>
+                    <ComboBoxItem>8</ComboBoxItem>
+                    <ComboBoxItem>10</ComboBoxItem>
+                </ComboBox>
+                <Label x:Name="labelDelay" Content="Затримка картинок:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,29.96,0,0"/>
+                <TextBox x:Name="delayTime" HorizontalAlignment="Left" Height="23" Margin="123.86,30.96,0,0" TextWrapping="Wrap" Text="10" VerticalAlignment="Top" Width="46.793"/>
+                <Label x:Name="labelUserName" Content="Ім'я гравця:" HorizontalAlignment="Left" Margin="243,4,0,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="userName" HorizontalAlignment="Left" Height="23" Margin="321.65,4,0,0" TextWrapping="Wrap" Text="гість" VerticalAlignment="Top" Width="102.718"/>
+                <Button x:Name="startGame" Content="Почати гру" HorizontalAlignment="Left" Margin="321.65,34,0,0" VerticalAlignment="Top" Width="102.718" Click="startGame_Click"/>
+                <Label x:Name="delayTimeSec" Content="сек." HorizontalAlignment="Left" Margin="170.653,29.96,0,0" VerticalAlignment="Top"/>
             </Grid>
         </GroupBox>
-        <GroupBox x:Name="groupBox1" Header="10 найкращих результатів" HorizontalAlignment="Left" Margin="0,76.644,0,0" VerticalAlignment="Top" Height="232.356" Width="443.842"/>
+        <GroupBox x:Name="groupBox1" Header="10 найкращих результатів" HorizontalAlignment="Left" Margin="0,90.644,0,0" VerticalAlignment="Top" Height="218.356" Width="443.842">
+            <ListView x:Name="listView" HorizontalAlignment="Left" Height="197.333" VerticalAlignment="Top" Width="433.842" Margin="0,0,-2,-1.937">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="№" Width="25" DisplayMemberBinding="{Binding Position}" />
+                        <GridViewColumn Header="Ім'я гравця" Width="205" DisplayMemberBinding="{Binding UserName}" />
+                        <GridViewColumn Header="Розмірність поля" Width="100" DisplayMemberBinding="{Binding FieldSize}" />
+                        <GridViewColumn Header="Найкращий час" Width="100" DisplayMemberBinding="{Binding FieldSize}" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </GroupBox>
 
     </Grid>
 </Window>

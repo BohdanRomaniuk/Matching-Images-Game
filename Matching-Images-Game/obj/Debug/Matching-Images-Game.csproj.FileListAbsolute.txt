@@ -11,3 +11,5 @@ E:\Dropbox\ЛНУ\3 курс\Навчальна практика (Бардила
 E:\Dropbox\ЛНУ\3 курс\Навчальна практика (Бардила)\Matching-Images-Game\Matching-Images-Game\obj\Debug\Matching-Images-Game.csproj.GenerateResource.Cache
 E:\Dropbox\ЛНУ\3 курс\Навчальна практика (Бардила)\Matching-Images-Game\Matching-Images-Game\obj\Debug\Matching-Images-Game.exe
 E:\Dropbox\ЛНУ\3 курс\Навчальна практика (Бардила)\Matching-Images-Game\Matching-Images-Game\obj\Debug\Matching-Images-Game.pdb
+E:\Dropbox\ЛНУ\3 курс\Навчальна практика (Бардила)\Matching-Images-Game\Matching-Images-Game\obj\Debug\GameWindow.g.cs
+E:\Dropbox\ЛНУ\3 курс\Навчальна практика (Бардила)\Matching-Images-Game\Matching-Images-Game\obj\Debug\GameWindow.baml

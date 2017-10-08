@@ -19,9 +19,22 @@ namespace Matching_Images_Game
 	/// </summary>
 	public partial class MainWindow : Window
 	{
+		private uint FieldSize;
 		public MainWindow()
 		{
 			InitializeComponent();
+			FieldSize = Convert.ToUInt32(fieldSize.SelectedItem);
 		}
+
+		private void fieldSize_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+			FieldSize = Convert.ToUInt32(fieldSize.SelectedItem);
+		}
+
+		private void startGame_Click(object sender, RoutedEventArgs e)
+		{
+			GameWindow gamingArea = new GameWindow();
+			gamingArea.Show();
+        }
 	}
 }
