@@ -45,3 +45,4 @@ D:\Хмара\ЛНУ\3 курс\Навчальна практика (Барди�
 D:\Хмара\ЛНУ\3 курс\Навчальна практика (Бардила)\Matching-Images-Game\Matching-Images-Game\obj\Debug\Matching-Images-Game.g.resources
 D:\Хмара\ЛНУ\3 курс\Навчальна практика (Бардила)\Matching-Images-Game\Matching-Images-Game\obj\Debug\Matching_Images_Game.Properties.Resources.resources
 D:\Хмара\ЛНУ\3 курс\Навчальна практика (Бардила)\Matching-Images-Game\Matching-Images-Game\obj\Debug\Matching-Images-Game.csproj.GenerateResource.Cache
+D:\Хмара\ЛНУ\3 курс\Навчальна практика (Бардила)\Matching-Images-Game\Matching-Images-Game\obj\Debug\GeneratedInternalTypeHelper.g.cs

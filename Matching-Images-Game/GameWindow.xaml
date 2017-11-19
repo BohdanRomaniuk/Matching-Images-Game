@@ -5,8 +5,6 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Matching_Images_Game"
         mc:Ignorable="d"
-        Title="Парні картинки" Height="453.158" Width="454.512" Icon="matching-icon.ico">
-    <Grid Margin="0,0,2,0">
-
-    </Grid>
+        Name="GameWindowN" Title="Парні картинки" Height="200" Width="200" Icon="matching-icon.ico">
+    <Grid Name="MainGrid" local:GridHelpers.RowCount="{Binding FieldSize.Key}" local:GridHelpers.ColumnCount="{Binding FieldSize.Key}"></Grid>
 </Window>

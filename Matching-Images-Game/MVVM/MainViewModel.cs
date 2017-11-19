@@ -76,9 +76,8 @@ namespace Matching_Images_Game.MVVM
         }
         private void startGame(object obj)
         {
-            MessageBox.Show(fieldSize.ToString());
-            //GameWindow gameWin = new GameWindow(this);
-            //gameWin.Show();
+            GameWindow gameWin = new GameWindow(this, FieldSize.Key);
+            gameWin.Show();
         }
         private void loadBestResults()
         {
