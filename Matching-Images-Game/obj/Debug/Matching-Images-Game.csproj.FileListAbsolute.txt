@@ -13,3 +13,35 @@ E:\Dropbox\ЛНУ\3 курс\Навчальна практика (Бардила
 E:\Dropbox\ЛНУ\3 курс\Навчальна практика (Бардила)\Matching-Images-Game\Matching-Images-Game\obj\Debug\Matching-Images-Game.pdb
 E:\Dropbox\ЛНУ\3 курс\Навчальна практика (Бардила)\Matching-Images-Game\Matching-Images-Game\obj\Debug\GameWindow.g.cs
 E:\Dropbox\ЛНУ\3 курс\Навчальна практика (Бардила)\Matching-Images-Game\Matching-Images-Game\obj\Debug\GameWindow.baml
+D:\Matching-Images-Game\Matching-Images-Game\bin\Debug\Matching-Images-Game.exe.config
+D:\Matching-Images-Game\Matching-Images-Game\obj\Debug\Matching-Images-Game.exe
+D:\Matching-Images-Game\Matching-Images-Game\obj\Debug\Matching-Images-Game.pdb
+D:\Matching-Images-Game\Matching-Images-Game\bin\Debug\Matching-Images-Game.exe
+D:\Matching-Images-Game\Matching-Images-Game\bin\Debug\Matching-Images-Game.pdb
+D:\Matching-Images-Game\Matching-Images-Game\obj\Debug\Matching-Images-Game.csprojResolveAssemblyReference.cache
+D:\Matching-Images-Game\Matching-Images-Game\obj\Debug\GameWindow.g.cs
+D:\Matching-Images-Game\Matching-Images-Game\obj\Debug\MainWindow.g.cs
+D:\Matching-Images-Game\Matching-Images-Game\obj\Debug\App.g.cs
+D:\Matching-Images-Game\Matching-Images-Game\obj\Debug\Matching-Images-Game_MarkupCompile.cache
+D:\Matching-Images-Game\Matching-Images-Game\obj\Debug\Matching-Images-Game_MarkupCompile.lref
+D:\Matching-Images-Game\Matching-Images-Game\obj\Debug\GameWindow.baml
+D:\Matching-Images-Game\Matching-Images-Game\obj\Debug\MainWindow.baml
+D:\Matching-Images-Game\Matching-Images-Game\obj\Debug\Matching-Images-Game.g.resources
+D:\Matching-Images-Game\Matching-Images-Game\obj\Debug\Matching_Images_Game.Properties.Resources.resources
+D:\Matching-Images-Game\Matching-Images-Game\obj\Debug\Matching-Images-Game.csproj.GenerateResource.Cache
+D:\Хмара\ЛНУ\3 курс\Навчальна практика (Бардила)\Matching-Images-Game\Matching-Images-Game\bin\Debug\Matching-Images-Game.exe.config
+D:\Хмара\ЛНУ\3 курс\Навчальна практика (Бардила)\Matching-Images-Game\Matching-Images-Game\obj\Debug\Matching-Images-Game.exe
+D:\Хмара\ЛНУ\3 курс\Навчальна практика (Бардила)\Matching-Images-Game\Matching-Images-Game\obj\Debug\Matching-Images-Game.pdb
+D:\Хмара\ЛНУ\3 курс\Навчальна практика (Бардила)\Matching-Images-Game\Matching-Images-Game\obj\Debug\Matching-Images-Game.csprojResolveAssemblyReference.cache
+D:\Хмара\ЛНУ\3 курс\Навчальна практика (Бардила)\Matching-Images-Game\Matching-Images-Game\obj\Debug\GameWindow.g.cs
+D:\Хмара\ЛНУ\3 курс\Навчальна практика (Бардила)\Matching-Images-Game\Matching-Images-Game\obj\Debug\MainWindow.g.cs
+D:\Хмара\ЛНУ\3 курс\Навчальна практика (Бардила)\Matching-Images-Game\Matching-Images-Game\obj\Debug\App.g.cs
+D:\Хмара\ЛНУ\3 курс\Навчальна практика (Бардила)\Matching-Images-Game\Matching-Images-Game\obj\Debug\Matching-Images-Game_MarkupCompile.cache
+D:\Хмара\ЛНУ\3 курс\Навчальна практика (Бардила)\Matching-Images-Game\Matching-Images-Game\obj\Debug\Matching-Images-Game_MarkupCompile.lref
+D:\Хмара\ЛНУ\3 курс\Навчальна практика (Бардила)\Matching-Images-Game\Matching-Images-Game\bin\Debug\Matching-Images-Game.exe
+D:\Хмара\ЛНУ\3 курс\Навчальна практика (Бардила)\Matching-Images-Game\Matching-Images-Game\bin\Debug\Matching-Images-Game.pdb
+D:\Хмара\ЛНУ\3 курс\Навчальна практика (Бардила)\Matching-Images-Game\Matching-Images-Game\obj\Debug\GameWindow.baml
+D:\Хмара\ЛНУ\3 курс\Навчальна практика (Бардила)\Matching-Images-Game\Matching-Images-Game\obj\Debug\MainWindow.baml
+D:\Хмара\ЛНУ\3 курс\Навчальна практика (Бардила)\Matching-Images-Game\Matching-Images-Game\obj\Debug\Matching-Images-Game.g.resources
+D:\Хмара\ЛНУ\3 курс\Навчальна практика (Бардила)\Matching-Images-Game\Matching-Images-Game\obj\Debug\Matching_Images_Game.Properties.Resources.resources
+D:\Хмара\ЛНУ\3 курс\Навчальна практика (Бардила)\Matching-Images-Game\Matching-Images-Game\obj\Debug\Matching-Images-Game.csproj.GenerateResource.Cache

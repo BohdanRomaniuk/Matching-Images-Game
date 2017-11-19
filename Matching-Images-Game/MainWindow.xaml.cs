@@ -1,40 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows;
+using Matching_Images_Game.MVVM;
 
 namespace Matching_Images_Game
 {
-	/// <summary>
-	/// Interaction logic for MainWindow.xaml
-	/// </summary>
-	public partial class MainWindow : Window
+    public partial class MainWindow : Window
 	{
-		private uint FieldSize;
 		public MainWindow()
 		{
 			InitializeComponent();
-			FieldSize = Convert.ToUInt32(fieldSize.SelectedItem);
+            DataContext = new MainViewModel();
 		}
-
-		private void fieldSize_SelectionChanged(object sender, SelectionChangedEventArgs e)
-		{
-			FieldSize = Convert.ToUInt32(fieldSize.SelectedItem);
-		}
-
-		private void startGame_Click(object sender, RoutedEventArgs e)
-		{
-			GameWindow gamingArea = new GameWindow();
-			gamingArea.Show();
-        }
 	}
 }
