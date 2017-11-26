@@ -171,7 +171,6 @@ namespace Matching_Images_Game
                     Grid.SetRow(btn, i);
                     Grid.SetColumn(btn, j);
                     btn.Content = imgWraper;
-                    //btn.Click += new RoutedEventHandler(ShowImage);
                     MainGrid.Children.Add(btn);
                 }
             }
@@ -256,25 +255,73 @@ namespace Matching_Images_Game
             return result;
         }
 
-        
+        private static string baseUrl = AppDomain.CurrentDomain.BaseDirectory+"images/";
         private List<Image> images = new List<Image>()
         {
-            new Image() { Width=100, Height=100, Uid="1", Source=new BitmapImage(new Uri("D:/Хмара/ЛНУ/3 курс/Навчальна практика (Бардила)/Matching-Images-Game/Matching-Images-Game/bin/Debug/images/leleka.jpg")) },
-            new Image() { Width=100, Height=100, Uid="1", Source=new BitmapImage(new Uri("D:/Хмара/ЛНУ/3 курс/Навчальна практика (Бардила)/Matching-Images-Game/Matching-Images-Game/bin/Debug/images/leleka.jpg")) },
-            new Image() { Width=100, Height=100, Uid="2", Source=new BitmapImage(new Uri("D:/Хмара/ЛНУ/3 курс/Навчальна практика (Бардила)/Matching-Images-Game/Matching-Images-Game/bin/Debug/images/flower1.png")) },
-            new Image() { Width=100, Height=100, Uid="2", Source=new BitmapImage(new Uri("D:/Хмара/ЛНУ/3 курс/Навчальна практика (Бардила)/Matching-Images-Game/Matching-Images-Game/bin/Debug/images/flower1.png")) },
-            new Image() { Width=100, Height=100, Uid="3", Source=new BitmapImage(new Uri("D:/Хмара/ЛНУ/3 курс/Навчальна практика (Бардила)/Matching-Images-Game/Matching-Images-Game/bin/Debug/images/sliva.jpg")) },
-            new Image() { Width=100, Height=100, Uid="3", Source=new BitmapImage(new Uri("D:/Хмара/ЛНУ/3 курс/Навчальна практика (Бардила)/Matching-Images-Game/Matching-Images-Game/bin/Debug/images/sliva.jpg")) },
-            new Image() { Width=100, Height=100, Uid="4", Source=new BitmapImage(new Uri("D:/Хмара/ЛНУ/3 курс/Навчальна практика (Бардила)/Matching-Images-Game/Matching-Images-Game/bin/Debug/images/bird1.jpg")) },
-            new Image() { Width=100, Height=100, Uid="4", Source=new BitmapImage(new Uri("D:/Хмара/ЛНУ/3 курс/Навчальна практика (Бардила)/Matching-Images-Game/Matching-Images-Game/bin/Debug/images/bird1.jpg")) },
-            new Image() { Width=100, Height=100, Uid="5", Source=new BitmapImage(new Uri("D:/Хмара/ЛНУ/3 курс/Навчальна практика (Бардила)/Matching-Images-Game/Matching-Images-Game/bin/Debug/images/bird2.jpg")) },
-            new Image() { Width=100, Height=100, Uid="5", Source=new BitmapImage(new Uri("D:/Хмара/ЛНУ/3 курс/Навчальна практика (Бардила)/Matching-Images-Game/Matching-Images-Game/bin/Debug/images/bird2.jpg")) },
-            new Image() { Width=100, Height=100, Uid="6", Source=new BitmapImage(new Uri("D:/Хмара/ЛНУ/3 курс/Навчальна практика (Бардила)/Matching-Images-Game/Matching-Images-Game/bin/Debug/images/butterfly1.jpg")) },
-            new Image() { Width=100, Height=100, Uid="6", Source=new BitmapImage(new Uri("D:/Хмара/ЛНУ/3 курс/Навчальна практика (Бардила)/Matching-Images-Game/Matching-Images-Game/bin/Debug/images/butterfly1.jpg")) },
-            new Image() { Width=100, Height=100, Uid="7", Source=new BitmapImage(new Uri("D:/Хмара/ЛНУ/3 курс/Навчальна практика (Бардила)/Matching-Images-Game/Matching-Images-Game/bin/Debug/images/flower2.jpg")) },
-            new Image() { Width=100, Height=100, Uid="7", Source=new BitmapImage(new Uri("D:/Хмара/ЛНУ/3 курс/Навчальна практика (Бардила)/Matching-Images-Game/Matching-Images-Game/bin/Debug/images/flower2.jpg")) },
-            new Image() { Width=100, Height=100, Uid="8", Source=new BitmapImage(new Uri("D:/Хмара/ЛНУ/3 курс/Навчальна практика (Бардила)/Matching-Images-Game/Matching-Images-Game/bin/Debug/images/rose.png")) },
-            new Image() { Width=100, Height=100, Uid="8", Source=new BitmapImage(new Uri("D:/Хмара/ЛНУ/3 курс/Навчальна практика (Бардила)/Matching-Images-Game/Matching-Images-Game/bin/Debug/images/rose.png")) },
+            new Image() { Width=100, Height=100, Uid="1", Source=new BitmapImage(new Uri(baseUrl+"leleka.jpg")) },
+            new Image() { Width=100, Height=100, Uid="1", Source=new BitmapImage(new Uri(baseUrl+"leleka.jpg")) },
+            new Image() { Width=100, Height=100, Uid="2", Source=new BitmapImage(new Uri(baseUrl+"flower1.png")) },
+            new Image() { Width=100, Height=100, Uid="2", Source=new BitmapImage(new Uri(baseUrl+"flower1.png")) },
+            new Image() { Width=100, Height=100, Uid="3", Source=new BitmapImage(new Uri(baseUrl+"sliva.jpg")) },
+            new Image() { Width=100, Height=100, Uid="3", Source=new BitmapImage(new Uri(baseUrl+"sliva.jpg")) },
+            new Image() { Width=100, Height=100, Uid="4", Source=new BitmapImage(new Uri(baseUrl+"bird1.jpg")) },
+            new Image() { Width=100, Height=100, Uid="4", Source=new BitmapImage(new Uri(baseUrl+"bird1.jpg")) },
+            new Image() { Width=100, Height=100, Uid="5", Source=new BitmapImage(new Uri(baseUrl+"bird2.jpg")) },
+            new Image() { Width=100, Height=100, Uid="5", Source=new BitmapImage(new Uri(baseUrl+"bird2.jpg")) },
+            new Image() { Width=100, Height=100, Uid="6", Source=new BitmapImage(new Uri(baseUrl+"butterfly1.jpg")) },
+            new Image() { Width=100, Height=100, Uid="6", Source=new BitmapImage(new Uri(baseUrl+"butterfly1.jpg")) },
+            new Image() { Width=100, Height=100, Uid="7", Source=new BitmapImage(new Uri(baseUrl+"flower2.jpg")) },
+            new Image() { Width=100, Height=100, Uid="7", Source=new BitmapImage(new Uri(baseUrl+"flower2.jpg")) },
+            new Image() { Width=100, Height=100, Uid="8", Source=new BitmapImage(new Uri(baseUrl+"rose.png")) },
+            new Image() { Width=100, Height=100, Uid="8", Source=new BitmapImage(new Uri(baseUrl+"rose.png")) },
+            new Image() { Width=100, Height=100, Uid="9", Source=new BitmapImage(new Uri(baseUrl+"flower3.jpg")) },
+            new Image() { Width=100, Height=100, Uid="9", Source=new BitmapImage(new Uri(baseUrl+"flower3.jpg")) },
+            new Image() { Width=100, Height=100, Uid="10", Source=new BitmapImage(new Uri(baseUrl+"squirel.jpg")) },
+            new Image() { Width=100, Height=100, Uid="10", Source=new BitmapImage(new Uri(baseUrl+"squirel.jpg")) },
+            new Image() { Width=100, Height=100, Uid="11", Source=new BitmapImage(new Uri(baseUrl+"butterfly.png")) },
+            new Image() { Width=100, Height=100, Uid="11", Source=new BitmapImage(new Uri(baseUrl+"butterfly.png")) },
+            new Image() { Width=100, Height=100, Uid="12", Source=new BitmapImage(new Uri(baseUrl+"lemon.jpg")) },
+            new Image() { Width=100, Height=100, Uid="12", Source=new BitmapImage(new Uri(baseUrl+"lemon.jpg")) },
+            new Image() { Width=100, Height=100, Uid="13", Source=new BitmapImage(new Uri(baseUrl+"flower4.jpg")) },
+            new Image() { Width=100, Height=100, Uid="13", Source=new BitmapImage(new Uri(baseUrl+"flower4.jpg")) },
+            new Image() { Width=100, Height=100, Uid="14", Source=new BitmapImage(new Uri(baseUrl+"garlic.jpg")) },
+            new Image() { Width=100, Height=100, Uid="14", Source=new BitmapImage(new Uri(baseUrl+"garlic.jpg")) },
+            new Image() { Width=100, Height=100, Uid="15", Source=new BitmapImage(new Uri(baseUrl+"bird3.jpeg")) },
+            new Image() { Width=100, Height=100, Uid="15", Source=new BitmapImage(new Uri(baseUrl+"bird3.jpeg")) },
+            new Image() { Width=100, Height=100, Uid="16", Source=new BitmapImage(new Uri(baseUrl+"bird4.jpeg")) },
+            new Image() { Width=100, Height=100, Uid="16", Source=new BitmapImage(new Uri(baseUrl+"bird4.jpeg")) },
+            new Image() { Width=100, Height=100, Uid="17", Source=new BitmapImage(new Uri(baseUrl+"bird5.jpg")) },
+            new Image() { Width=100, Height=100, Uid="17", Source=new BitmapImage(new Uri(baseUrl+"bird5.jpg")) },
+            new Image() { Width=100, Height=100, Uid="18", Source=new BitmapImage(new Uri(baseUrl+"bird6.jpg")) },
+            new Image() { Width=100, Height=100, Uid="18", Source=new BitmapImage(new Uri(baseUrl+"bird6.jpg")) },
+            new Image() { Width=100, Height=100, Uid="19", Source=new BitmapImage(new Uri(baseUrl+"tomato.jpg")) },
+            new Image() { Width=100, Height=100, Uid="19", Source=new BitmapImage(new Uri(baseUrl+"tomato.jpg")) },
+            new Image() { Width=100, Height=100, Uid="20", Source=new BitmapImage(new Uri(baseUrl+"flower6.jpg")) },
+            new Image() { Width=100, Height=100, Uid="20", Source=new BitmapImage(new Uri(baseUrl+"flower6.jpg")) },
+            new Image() { Width=100, Height=100, Uid="21", Source=new BitmapImage(new Uri(baseUrl+"fox.jpg")) },
+            new Image() { Width=100, Height=100, Uid="21", Source=new BitmapImage(new Uri(baseUrl+"fox.jpg")) },
+            new Image() { Width=100, Height=100, Uid="22", Source=new BitmapImage(new Uri(baseUrl+"orange.jpg")) },
+            new Image() { Width=100, Height=100, Uid="22", Source=new BitmapImage(new Uri(baseUrl+"orange.jpg")) },
+            new Image() { Width=100, Height=100, Uid="23", Source=new BitmapImage(new Uri(baseUrl+"bee.jpg")) },
+            new Image() { Width=100, Height=100, Uid="23", Source=new BitmapImage(new Uri(baseUrl+"bee.jpg")) },
+            new Image() { Width=100, Height=100, Uid="24", Source=new BitmapImage(new Uri(baseUrl+"bird7.jpg")) },
+            new Image() { Width=100, Height=100, Uid="24", Source=new BitmapImage(new Uri(baseUrl+"bird7.jpg")) },
+            new Image() { Width=100, Height=100, Uid="25", Source=new BitmapImage(new Uri(baseUrl+"romashka.png")) },
+            new Image() { Width=100, Height=100, Uid="25", Source=new BitmapImage(new Uri(baseUrl+"romashka.png")) },
+            new Image() { Width=100, Height=100, Uid="26", Source=new BitmapImage(new Uri(baseUrl+"soroka.jpg")) },
+            new Image() { Width=100, Height=100, Uid="26", Source=new BitmapImage(new Uri(baseUrl+"soroka.jpg")) },
+            new Image() { Width=100, Height=100, Uid="27", Source=new BitmapImage(new Uri(baseUrl+"lily.jpg")) },
+            new Image() { Width=100, Height=100, Uid="27", Source=new BitmapImage(new Uri(baseUrl+"lily.jpg")) },
+            new Image() { Width=100, Height=100, Uid="28", Source=new BitmapImage(new Uri(baseUrl+"flower5.jpg")) },
+            new Image() { Width=100, Height=100, Uid="28", Source=new BitmapImage(new Uri(baseUrl+"flower5.jpg")) },
+            new Image() { Width=100, Height=100, Uid="29", Source=new BitmapImage(new Uri(baseUrl+"butterfly3.jpg")) },
+            new Image() { Width=100, Height=100, Uid="29", Source=new BitmapImage(new Uri(baseUrl+"butterfly3.jpg")) },
+            new Image() { Width=100, Height=100, Uid="30", Source=new BitmapImage(new Uri(baseUrl+"cherry.png")) },
+            new Image() { Width=100, Height=100, Uid="30", Source=new BitmapImage(new Uri(baseUrl+"cherry.png")) },
+            new Image() { Width=100, Height=100, Uid="31", Source=new BitmapImage(new Uri(baseUrl+"pear.jpg")) },
+            new Image() { Width=100, Height=100, Uid="31", Source=new BitmapImage(new Uri(baseUrl+"pear.jpg")) },
+            new Image() { Width=100, Height=100, Uid="32", Source=new BitmapImage(new Uri(baseUrl+"sunflower.png")) },
+            new Image() { Width=100, Height=100, Uid="32", Source=new BitmapImage(new Uri(baseUrl+"sunflower.png")) },
         };
     }
 }
