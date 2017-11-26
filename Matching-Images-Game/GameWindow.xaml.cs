@@ -6,6 +6,8 @@ using System.Windows.Media.Imaging;
 using System;
 using System.Linq;
 using System.Windows.Input;
+using System.Collections.Generic;
+using System.Windows.Threading;
 
 namespace Matching_Images_Game
 {
@@ -132,7 +134,13 @@ namespace Matching_Images_Game
     }
     public partial class GameWindow : Window
 	{
-        public GameWindow(MainViewModel viewModel, int size)
+        private Image firstImage = null;
+        private Image secondImage = null;
+        private DateTime startTime;
+        Random randomizer = new Random();
+        private uint imageCount = 0;
+        private uint realImageCount;
+        public GameWindow(MainViewModel viewModel)
         {
             InitializeComponent();
             DataContext = viewModel;
@@ -141,36 +149,132 @@ namespace Matching_Images_Game
             Width = fieldSize + 30;
             MainGrid.Height = fieldSize;
             MainGrid.Width = fieldSize;
-            
-            Image img = CreateImage();
-            img.MouseUp += new MouseButtonEventHandler(Show);
-            Grid.SetRow(img, 0);
-            Grid.SetColumn(img, 0);
-            MainGrid.Children.Add(img);
+            int size = viewModel.FieldSize.Key;
+            uint delay = viewModel.DelayTime;
+            realImageCount = (uint)(size * size);
+            images.RemoveRange(size * size, images.Count - size * size);
 
-            var img2 = CreateImage();
-            Grid.SetRow(img2, 2);
-            Grid.SetColumn(img2, 2);
-            MainGrid.Children.Add(img2);
+            for (int i = 0; i < size; ++i)
+            {
+                for (int j = 0; j < size; ++j)
+                {
+                    Image img = CreateImage();
 
-            var img1 = CreateImage();
-            Grid.SetRow(img1, 3);
-            Grid.SetColumn(img1, 3);
-            MainGrid.Children.Add(img1);
+                    StackPanel imgWraper = new StackPanel();
+                    imgWraper.Orientation = Orientation.Horizontal;
+                    imgWraper.Children.Add(img);
+
+                    Button btn = new Button();
+                    btn.Height = 98;
+                    btn.Width = 98;
+                    btn.Margin = new Thickness(1);
+                    Grid.SetRow(btn, i);
+                    Grid.SetColumn(btn, j);
+                    btn.Content = imgWraper;
+                    //btn.Click += new RoutedEventHandler(ShowImage);
+                    MainGrid.Children.Add(btn);
+                }
+            }
+           
+            DispatcherTimer delayTimer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(delay) };
+            delayTimer.Start();
+            delayTimer.Tick += (sender, args) =>
+            {
+                startTime = DateTime.Now;
+                delayTimer.Stop();
+                HideAllImages();
+            };
         }
-        public void Show(object sender, MouseButtonEventArgs args)
+
+        private void HideAllImages()
         {
-            MessageBox.Show((sender as Image).Source.ToString());
+            UIElementCollection allImages = MainGrid.Children;
+            foreach(Button elem in allImages)
+            {
+                elem.Click += new RoutedEventHandler(ShowImage);
+                (elem.Content as StackPanel).Children[0].Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void ShowImage(object sender, EventArgs args)
+        {
+            Image imageInside = (((sender as Button).Content as StackPanel).Children[0] as Image);
+            if(firstImage==null && imageInside.Visibility == Visibility.Hidden)
+            {
+                firstImage = imageInside;
+                imageInside.Visibility = Visibility.Visible;
+                ++imageCount;
+            }
+            else if(imageInside.Visibility == Visibility.Hidden)
+            {
+                secondImage = imageInside;
+                if (secondImage.Uid == firstImage.Uid)
+                {
+                    imageInside.Visibility = Visibility.Visible;
+                    if (++imageCount == realImageCount)
+                    {
+                        CheckResult();
+                    }
+                    firstImage = null;
+                    secondImage = null;
+                }
+            }
+        }
+
+        private void CheckResult()
+        {
+            string size = (DataContext as MainViewModel).FieldSize.Value;
+            TimeSpan elapsedTime = DateTime.Now - startTime;
+            uint points = (uint)((DataContext as MainViewModel).FieldSize.Key * elapsedTime.Seconds);
+            string gamer = (DataContext as MainViewModel).GamerName;
+            
+            if(points>(DataContext as MainViewModel).BestResults.Last().Points)
+            {
+                uint position = 1;
+                foreach(var elem in (DataContext as MainViewModel).BestResults)
+                {
+                    if(points>=elem.Points)
+                    {
+                        break;
+                    }
+                    ++position;
+                }
+                (DataContext as MainViewModel).BestResults.Add(new DataTypes.Result(position, gamer, size, (uint)elapsedTime.TotalSeconds, points));
+            }
+            if (MessageBox.Show(String.Format("Вітаємо {0}! Ви набрали {1} очків!\nСумарний час даної спроби {2} сек.", gamer, points, elapsedTime.Seconds), "Перемога") == MessageBoxResult.OK)
+            {
+                Close();
+            }
         }
 
         private Image CreateImage()
         {
-            Image Mole = new Image();
-            Mole.Width = 100;
-            Mole.Height = 100;
-            ImageSource MoleImage = new BitmapImage(new Uri("http://toloka.to/images/avatars/11627673524faac25eb2ff8.jpg"));
-            Mole.Source = MoleImage;
-            return Mole;
+            Image result = new Image();
+            int index = randomizer.Next(images.Count);
+            result = images[index];
+            images.RemoveAt(index);
+            return result;
         }
+
+        
+        private List<Image> images = new List<Image>()
+        {
+            new Image() { Width=100, Height=100, Uid="1", Source=new BitmapImage(new Uri("D:/Хмара/ЛНУ/3 курс/Навчальна практика (Бардила)/Matching-Images-Game/Matching-Images-Game/bin/Debug/images/leleka.jpg")) },
+            new Image() { Width=100, Height=100, Uid="1", Source=new BitmapImage(new Uri("D:/Хмара/ЛНУ/3 курс/Навчальна практика (Бардила)/Matching-Images-Game/Matching-Images-Game/bin/Debug/images/leleka.jpg")) },
+            new Image() { Width=100, Height=100, Uid="2", Source=new BitmapImage(new Uri("D:/Хмара/ЛНУ/3 курс/Навчальна практика (Бардила)/Matching-Images-Game/Matching-Images-Game/bin/Debug/images/flower1.png")) },
+            new Image() { Width=100, Height=100, Uid="2", Source=new BitmapImage(new Uri("D:/Хмара/ЛНУ/3 курс/Навчальна практика (Бардила)/Matching-Images-Game/Matching-Images-Game/bin/Debug/images/flower1.png")) },
+            new Image() { Width=100, Height=100, Uid="3", Source=new BitmapImage(new Uri("D:/Хмара/ЛНУ/3 курс/Навчальна практика (Бардила)/Matching-Images-Game/Matching-Images-Game/bin/Debug/images/sliva.jpg")) },
+            new Image() { Width=100, Height=100, Uid="3", Source=new BitmapImage(new Uri("D:/Хмара/ЛНУ/3 курс/Навчальна практика (Бардила)/Matching-Images-Game/Matching-Images-Game/bin/Debug/images/sliva.jpg")) },
+            new Image() { Width=100, Height=100, Uid="4", Source=new BitmapImage(new Uri("D:/Хмара/ЛНУ/3 курс/Навчальна практика (Бардила)/Matching-Images-Game/Matching-Images-Game/bin/Debug/images/bird1.jpg")) },
+            new Image() { Width=100, Height=100, Uid="4", Source=new BitmapImage(new Uri("D:/Хмара/ЛНУ/3 курс/Навчальна практика (Бардила)/Matching-Images-Game/Matching-Images-Game/bin/Debug/images/bird1.jpg")) },
+            new Image() { Width=100, Height=100, Uid="5", Source=new BitmapImage(new Uri("D:/Хмара/ЛНУ/3 курс/Навчальна практика (Бардила)/Matching-Images-Game/Matching-Images-Game/bin/Debug/images/bird2.jpg")) },
+            new Image() { Width=100, Height=100, Uid="5", Source=new BitmapImage(new Uri("D:/Хмара/ЛНУ/3 курс/Навчальна практика (Бардила)/Matching-Images-Game/Matching-Images-Game/bin/Debug/images/bird2.jpg")) },
+            new Image() { Width=100, Height=100, Uid="6", Source=new BitmapImage(new Uri("D:/Хмара/ЛНУ/3 курс/Навчальна практика (Бардила)/Matching-Images-Game/Matching-Images-Game/bin/Debug/images/butterfly1.jpg")) },
+            new Image() { Width=100, Height=100, Uid="6", Source=new BitmapImage(new Uri("D:/Хмара/ЛНУ/3 курс/Навчальна практика (Бардила)/Matching-Images-Game/Matching-Images-Game/bin/Debug/images/butterfly1.jpg")) },
+            new Image() { Width=100, Height=100, Uid="7", Source=new BitmapImage(new Uri("D:/Хмара/ЛНУ/3 курс/Навчальна практика (Бардила)/Matching-Images-Game/Matching-Images-Game/bin/Debug/images/flower2.jpg")) },
+            new Image() { Width=100, Height=100, Uid="7", Source=new BitmapImage(new Uri("D:/Хмара/ЛНУ/3 курс/Навчальна практика (Бардила)/Matching-Images-Game/Matching-Images-Game/bin/Debug/images/flower2.jpg")) },
+            new Image() { Width=100, Height=100, Uid="8", Source=new BitmapImage(new Uri("D:/Хмара/ЛНУ/3 курс/Навчальна практика (Бардила)/Matching-Images-Game/Matching-Images-Game/bin/Debug/images/rose.png")) },
+            new Image() { Width=100, Height=100, Uid="8", Source=new BitmapImage(new Uri("D:/Хмара/ЛНУ/3 курс/Навчальна практика (Бардила)/Matching-Images-Game/Matching-Images-Game/bin/Debug/images/rose.png")) },
+        };
     }
 }

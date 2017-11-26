@@ -76,7 +76,7 @@ namespace Matching_Images_Game.MVVM
         }
         private void startGame(object obj)
         {
-            GameWindow gameWin = new GameWindow(this, FieldSize.Key);
+            GameWindow gameWin = new GameWindow(this);
             gameWin.Show();
         }
         private void loadBestResults()

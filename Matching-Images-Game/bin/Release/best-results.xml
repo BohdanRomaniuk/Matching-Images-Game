@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<ArrayOfResult xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Result>
+    <Number>1</Number>
+    <GamerName>Bohdan</GamerName>
+    <FieldSize>2x2</FieldSize>
+    <BestTime>123</BestTime>
+    <Points>2300</Points>
+  </Result>
+  <Result>
+    <Number>2</Number>
+    <GamerName>Modest</GamerName>
+    <FieldSize>8x8</FieldSize>
+    <BestTime>133</BestTime>
+    <Points>1212</Points>
+  </Result>
+  <Result>
+    <Number>3</Number>
+    <GamerName>Vlad</GamerName>
+    <FieldSize>8x8</FieldSize>
+    <BestTime>143</BestTime>
+    <Points>1012</Points>
+  </Result>
+</ArrayOfResult>

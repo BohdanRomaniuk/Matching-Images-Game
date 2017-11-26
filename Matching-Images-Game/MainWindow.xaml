@@ -7,20 +7,56 @@
         mc:Ignorable="d"
         Title="Парні картинки" Height="350" Width="461.842" Icon="matching-icon.ico">
     <Grid>
-        <GroupBox x:Name="groupBox" Header="Меню" HorizontalAlignment="Left" VerticalAlignment="Top" Height="85.644" Width="444.368">
-            <Grid Margin="0,0,-2,-22.96">
-                <Label x:Name="labeSize" Content="Розмірність поля:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,4,0,0"/>
-                <ComboBox ItemsSource="{Binding FieldSizes}" SelectedItem="{Binding FieldSize}"  DisplayMemberPath="Value" SelectedValuePath="Key" Margin="124,3,262.2,61.16" />
-                <Label x:Name="labelDelay" Content="Затримка картинок:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,29.96,0,0"/>
-                <TextBox x:Name="delayTime" HorizontalAlignment="Left" Height="23" Margin="123.86,30.96,0,0" TextWrapping="Wrap" Text="{Binding DelayTime}" VerticalAlignment="Top" Width="46.793"/>
-                <Label x:Name="labelUserName" Content="Ім'я гравця:" HorizontalAlignment="Left" Margin="243,4,0,0" VerticalAlignment="Top"/>
-                <TextBox x:Name="userName" HorizontalAlignment="Left" Height="23" Margin="321.65,4,0,0" TextWrapping="Wrap" Text="{Binding GamerName}" VerticalAlignment="Top" Width="102.718"/>
-                <Button x:Name="startGame" Content="Почати гру" Command="{Binding StartGame}" HorizontalAlignment="Left" Margin="321.65,34,0,0" VerticalAlignment="Top" Width="102.718"/>
-                <Label x:Name="delayTimeSec" Content="сек." HorizontalAlignment="Left" Margin="170.653,29.96,0,0" VerticalAlignment="Top"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <GroupBox x:Name="groupBox" Header="Меню" Margin="5,0" Grid.Row="0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.5*"/>
+                    <ColumnDefinition Width="0.5*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label x:Name="labeSize" Content="Розмірність поля:"/>
+                    <ComboBox ItemsSource="{Binding FieldSizes}" SelectedItem="{Binding FieldSize}"  DisplayMemberPath="Value" SelectedValuePath="Key" Grid.Column="1" Margin="3"/>
+                    <Label x:Name="labelDelay" Content="Затримка картинок:" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="1"/>
+                    <Grid Grid.Column="1" Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.7*"/>
+                            <ColumnDefinition Width="0.3*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox x:Name="delayTime"  TextWrapping="Wrap" Text="{Binding DelayTime}" Margin="3"/>
+                        <Label x:Name="delayTimeSec" Content="сек." Grid.Column="1"/>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.5*"/>
+                            <ColumnDefinition Width="0.5*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label x:Name="labelUserName" Content="Ім'я гравця:"/>
+                        <TextBox x:Name="userName" TextWrapping="Wrap" Text="{Binding GamerName}" Grid.Column="1" Margin="3"/>
+                    </Grid>
+                    <Button x:Name="startGame" Content="Почати гру" Command="{Binding StartGame}" Grid.Row="1" Margin="3"/>
+                </Grid>
             </Grid>
         </GroupBox>
-        <GroupBox x:Name="groupBox1" Header="10 найкращих результатів" HorizontalAlignment="Left" Margin="0,90.644,0,0" VerticalAlignment="Top" Height="218.356" Width="443.842">
-            <ListView x:Name="listView" ItemsSource="{Binding BestResults}" HorizontalAlignment="Left" Height="197.333" VerticalAlignment="Top" Width="433.842" Margin="0,0,-2,-1.937">
+        <GroupBox x:Name="groupBox1" Header="10 найкращих результатів" Margin="5,0" Grid.Row="1">
+            <ListView x:Name="listView" ItemsSource="{Binding BestResults}">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="№" Width="25" DisplayMemberBinding="{Binding Number}" />
@@ -32,6 +68,5 @@
                 </ListView.View>
             </ListView>
         </GroupBox>
-
     </Grid>
 </Window>

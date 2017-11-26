@@ -4,15 +4,15 @@
 winexe
 C#
 .cs
-D:\Хмара\ЛНУ\3 курс\Навчальна практика (Бардила)\Matching-Images-Game\Matching-Images-Game\obj\Debug\
+D:\Хмара\ЛНУ\3 курс\Навчальна практика (Бардила)\Matching-Images-Game\Matching-Images-Game\obj\Release\
 Matching_Images_Game
 none
 false
-DEBUG;TRACE
+TRACE
 D:\Хмара\ЛНУ\3 курс\Навчальна практика (Бардила)\Matching-Images-Game\Matching-Images-Game\App.xaml
 2-114757256
 
-13-330598418
+91233959367
 11-321411802
 GameWindow.xaml;MainWindow.xaml;
 
