@@ -139,6 +139,8 @@ namespace Matching_Images_Game
         private DateTime startTime;
         Random randomizer = new Random();
         private uint imageCount = 0;
+        private uint missCount = 0;
+        private uint maxMissCount;
         private uint realImageCount;
         public GameWindow(MainViewModel viewModel)
         {
@@ -152,6 +154,8 @@ namespace Matching_Images_Game
             int size = viewModel.FieldSize.Key;
             uint delay = viewModel.DelayTime;
             realImageCount = (uint)(size * size);
+            maxMissCount = GetMaxMisses(viewModel.FieldSize.Key);
+
             images.RemoveRange(size * size, images.Count - size * size);
 
             for (int i = 0; i < size; ++i)
@@ -194,6 +198,18 @@ namespace Matching_Images_Game
                 (elem.Content as StackPanel).Children[0].Visibility = Visibility.Hidden;
             }
         }
+        
+        private uint GetMaxMisses(int fieldSize)
+        {
+            uint missStep = (uint)(fieldSize * fieldSize - 2);
+            uint misses = 0;
+            while(missStep >= 2)
+            {
+                misses += missStep;
+                missStep -= 2;
+            }
+            return misses;
+        }
 
         private void ShowImage(object sender, EventArgs args)
         {
@@ -217,6 +233,10 @@ namespace Matching_Images_Game
                     firstImage = null;
                     secondImage = null;
                 }
+                else
+                {
+                    ++missCount;
+                }
             }
         }
 
@@ -224,7 +244,7 @@ namespace Matching_Images_Game
         {
             string size = (DataContext as MainViewModel).FieldSize.Value;
             TimeSpan elapsedTime = DateTime.Now - startTime;
-            uint points = (uint)((DataContext as MainViewModel).FieldSize.Key * elapsedTime.Seconds);
+            uint points = maxMissCount-missCount;
             string gamer = (DataContext as MainViewModel).GamerName;
             
             if(points>(DataContext as MainViewModel).BestResults.Last().Points)
@@ -238,11 +258,12 @@ namespace Matching_Images_Game
                     }
                     ++position;
                 }
-                (DataContext as MainViewModel).BestResults.Add(new DataTypes.Result(position, gamer, size, (uint)elapsedTime.TotalSeconds, points));
+                //(DataContext as MainViewModel).BestResults.Add(new DataTypes.Result(position, gamer, size, (uint)elapsedTime.TotalSeconds, points));
             }
-            if (MessageBox.Show(String.Format("Вітаємо {0}! Ви набрали {1} очків!\nСумарний час даної спроби {2} сек.", gamer, points, elapsedTime.Seconds), "Перемога") == MessageBoxResult.OK)
+            if (MessageBox.Show(String.Format("Вітаємо {0}! Ви набрали {1} очків!\nПромахів {2} сек.\nСумарний час даної спроби {3}", gamer, points, missCount, elapsedTime), "Перемога") == MessageBoxResult.OK)
             {
                 Close();
+                (DataContext as MainViewModel).BestResults.Add(new DataTypes.Result(12, gamer, size, (uint)elapsedTime.TotalSeconds, points));
             }
         }
 

@@ -63,15 +63,14 @@ namespace Matching_Images_Game.MVVM
         public MainViewModel()
         {
             DelayTime = 10;
-            GamerName = "гість";
+            GamerName = "Гість";
             StartGame = new RelayCommand(startGame);
             BestResults = new ObservableCollection<Result>();
             FieldSizes = new Dictionary<int, string>();
-            FieldSizes[2] = "2x2";
             FieldSizes[4] = "4x4";
             FieldSizes[6] = "6x6";
             FieldSizes[8] = "8x8";
-            FieldSize = new KeyValuePair<int,string>(2,"2x2");
+            FieldSize = new KeyValuePair<int,string>(4,"4x4");
             loadBestResults();
         }
         private void startGame(object obj)
@@ -82,16 +81,19 @@ namespace Matching_Images_Game.MVVM
         private void loadBestResults()
         {
             string fileName = "best-results.xml";
-            List<Result> results = new List<Result>();
-            XmlSerializer serializer = new XmlSerializer(typeof(List<Result>));
-            using (XmlReader reader = XmlReader.Create(fileName))
+            if (File.ReadAllLines(fileName).Count() != 0)
             {
-                results = (List<Result>)serializer.Deserialize(reader);
-            }
-            BestResults.Clear();
-            foreach(Result res in results)
-            {
-                BestResults.Add(res);
+                List<Result> results = new List<Result>();
+                XmlSerializer serializer = new XmlSerializer(typeof(List<Result>));
+                using (XmlReader reader = XmlReader.Create(fileName))
+                {
+                    results = (List<Result>)serializer.Deserialize(reader);
+                }
+                BestResults.Clear();
+                foreach (Result res in results)
+                {
+                    BestResults.Add(res);
+                }
             }
         }
         private void saveBestResults()
