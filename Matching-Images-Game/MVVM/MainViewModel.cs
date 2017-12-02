@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
 using Matching_Images_Game.DataTypes;
@@ -12,13 +9,10 @@ using System.Windows;
 using System.Xml.Serialization;
 using System.Xml;
 using System.IO;
-using System.Windows.Data;
-using System.Windows.Controls;
-using System.Globalization;
 
 namespace Matching_Images_Game.MVVM
 {
-    public class MainViewModel: INotifyPropertyChanged
+    public class MainViewModel: INotifyPropertyChanged, IResultSaver
     {
         public ObservableCollection<Result> BestResults { get; private set; }
         public Dictionary<int, string> FieldSizes { get; set; }
@@ -34,7 +28,7 @@ namespace Matching_Images_Game.MVVM
             set
             {
                 fieldSize = value;
-                loadBestResults("best-results"+value.Key+".xml");
+                LoadBestResults("best-results"+value.Key+".xml");
                 OnPropertyChanged(nameof(FieldSize));
             }
         }
@@ -109,9 +103,9 @@ namespace Matching_Images_Game.MVVM
                     BestResults.Add(sortedResults[i]);
                 }
             }
-            saveBestResults("best-results" + FieldSize.Key + ".xml");
+            SaveBestResults("best-results" + FieldSize.Key + ".xml");
         }
-        private void loadBestResults(string fileName)
+        public void LoadBestResults(string fileName)
         {
             if (File.ReadAllLines(fileName).Count() != 0)
             {
@@ -128,7 +122,7 @@ namespace Matching_Images_Game.MVVM
                 }
             }
         }
-        private void saveBestResults(string fileName)
+        public void SaveBestResults(string fileName)
         {
             List<Result> results = new List<Result>();
             foreach (var res in BestResults)

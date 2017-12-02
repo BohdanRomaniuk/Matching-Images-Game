@@ -1,11 +1,9 @@
 ﻿using System.Windows;
 using Matching_Images_Game.MVVM;
 using System.Windows.Controls;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System;
 using System.Linq;
-using System.Windows.Input;
 using System.Collections.Generic;
 using System.Windows.Threading;
 using Matching_Images_Game.DataTypes;
