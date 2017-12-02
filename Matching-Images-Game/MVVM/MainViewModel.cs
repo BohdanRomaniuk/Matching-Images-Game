@@ -12,6 +12,9 @@ using System.Windows;
 using System.Xml.Serialization;
 using System.Xml;
 using System.IO;
+using System.Windows.Data;
+using System.Windows.Controls;
+using System.Globalization;
 
 namespace Matching_Images_Game.MVVM
 {
@@ -19,7 +22,6 @@ namespace Matching_Images_Game.MVVM
     {
         public ObservableCollection<Result> BestResults { get; private set; }
         public Dictionary<int, string> FieldSizes { get; set; }
-
         private KeyValuePair<int, string> fieldSize;
         private uint delayTime;
         private string gamerName;
@@ -32,6 +34,7 @@ namespace Matching_Images_Game.MVVM
             set
             {
                 fieldSize = value;
+                loadBestResults("best-results"+value.Key+".xml");
                 OnPropertyChanged(nameof(FieldSize));
             }
         }
@@ -43,7 +46,15 @@ namespace Matching_Images_Game.MVVM
             }
             set
             {
-                delayTime = value;
+                if(value<=60)
+                {
+                    delayTime = value;
+                }
+                else
+                {
+                    MessageBox.Show("Час затримки не може перевищувати 60 секунд!", "Помилка");
+                    delayTime = 60;
+                }
                 OnPropertyChanged(nameof(DelayTime));
             }
         }
@@ -71,16 +82,37 @@ namespace Matching_Images_Game.MVVM
             FieldSizes[6] = "6x6";
             FieldSizes[8] = "8x8";
             FieldSize = new KeyValuePair<int,string>(4,"4x4");
-            loadBestResults();
         }
         private void startGame(object obj)
         {
             GameWindow gameWin = new GameWindow(this);
             gameWin.Show();
         }
-        private void loadBestResults()
+        public void AddResult(Result newResult)
         {
-            string fileName = "best-results.xml";
+            List<Result> sortedResults = new List<Result>(BestResults);
+            sortedResults.Add(newResult);
+            sortedResults.Sort();
+            if (BestResults.Count<10)
+            {
+                BestResults.Clear();
+                foreach (Result res in sortedResults)
+                {
+                    BestResults.Add(res);
+                }
+            }
+            else
+            {
+                BestResults.Clear();
+                for (int i=0; i<10; ++i)
+                {
+                    BestResults.Add(sortedResults[i]);
+                }
+            }
+            saveBestResults("best-results" + FieldSize.Key + ".xml");
+        }
+        private void loadBestResults(string fileName)
+        {
             if (File.ReadAllLines(fileName).Count() != 0)
             {
                 List<Result> results = new List<Result>();
@@ -96,9 +128,8 @@ namespace Matching_Images_Game.MVVM
                 }
             }
         }
-        private void saveBestResults()
+        private void saveBestResults(string fileName)
         {
-            string fileName = "best-results.xml";
             List<Result> results = new List<Result>();
             foreach (var res in BestResults)
             {

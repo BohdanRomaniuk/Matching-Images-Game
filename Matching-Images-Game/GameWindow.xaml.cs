@@ -8,6 +8,7 @@ using System.Linq;
 using System.Windows.Input;
 using System.Collections.Generic;
 using System.Windows.Threading;
+using Matching_Images_Game.DataTypes;
 
 namespace Matching_Images_Game
 {
@@ -247,23 +248,10 @@ namespace Matching_Images_Game
             uint points = maxMissCount-missCount;
             string gamer = (DataContext as MainViewModel).GamerName;
             
-            if(points>(DataContext as MainViewModel).BestResults.Last().Points)
+            if (MessageBox.Show(String.Format("Вітаємо {0}! Ви набрали {1} очків!\nПромахів {2}\nСумарний час даної спроби {3:hh\\:mm\\:ss}", gamer, points, missCount, elapsedTime), "Перемога") == MessageBoxResult.OK)
             {
-                uint position = 1;
-                foreach(var elem in (DataContext as MainViewModel).BestResults)
-                {
-                    if(points>=elem.Points)
-                    {
-                        break;
-                    }
-                    ++position;
-                }
-                //(DataContext as MainViewModel).BestResults.Add(new DataTypes.Result(position, gamer, size, (uint)elapsedTime.TotalSeconds, points));
-            }
-            if (MessageBox.Show(String.Format("Вітаємо {0}! Ви набрали {1} очків!\nПромахів {2} сек.\nСумарний час даної спроби {3}", gamer, points, missCount, elapsedTime), "Перемога") == MessageBoxResult.OK)
-            {
+                (DataContext as MainViewModel).AddResult(new Result(gamer, size, (uint)elapsedTime.TotalSeconds, points));
                 Close();
-                (DataContext as MainViewModel).BestResults.Add(new DataTypes.Result(12, gamer, size, (uint)elapsedTime.TotalSeconds, points));
             }
         }
 

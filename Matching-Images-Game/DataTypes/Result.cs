@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,24 +8,8 @@ using System.Threading.Tasks;
 namespace Matching_Images_Game.DataTypes
 {
     [Serializable]
-    public class Result
+    public class Result: IComparable
     {
-        private uint number;
-        public uint Number
-        {
-            get
-            {
-                return number;
-            }
-            set
-            {
-                if(number<0 || number>10)
-                {
-                    throw new ArgumentException("Номер результату повинен бути в межах [0,10]");
-                }
-                number = value;
-            }
-        }
         public string GamerName { get; set; }
         public string FieldSize { get; set; }
         public uint BestTime { get; set; }
@@ -32,13 +17,17 @@ namespace Matching_Images_Game.DataTypes
         public Result()
         {
         }
-        public Result(uint _number, string _gamerName, string _fieldSize, uint _bestTime, uint _points)
+        public Result(string _gamerName, string _fieldSize, uint _bestTime, uint _points)
         {
-            Number = _number;
             GamerName = _gamerName;
             FieldSize = _fieldSize;
             BestTime = _bestTime;
             Points = _points;
+        }
+
+        public int CompareTo(object obj)
+        {
+            return (obj as Result).Points.CompareTo(Points);
         }
     }
 }

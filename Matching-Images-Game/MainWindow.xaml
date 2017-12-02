@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Matching_Images_Game"
         mc:Ignorable="d"
-        Title="Парні картинки" Height="350" Width="461.842" Icon="matching-icon.ico">
+        Title="Парні картинки" Height="375" Width="470" Icon="matching-icon.ico">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
@@ -55,11 +55,15 @@
                 </Grid>
             </Grid>
         </GroupBox>
+
         <GroupBox x:Name="groupBox1" Header="10 найкращих результатів" Margin="5,0" Grid.Row="1">
-            <ListView x:Name="listView" ItemsSource="{Binding BestResults}">
+            <ListView x:Name="listView" ItemsSource="{Binding BestResults}" AlternationCount="10">
+                <ListView.Resources>
+                    <local:DateConverter x:Key="IndexConverter"/>
+                </ListView.Resources>
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="№" Width="25" DisplayMemberBinding="{Binding Number}" />
+                        <GridViewColumn Header="№" Width="25" DisplayMemberBinding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListViewItem}} , Converter={StaticResource IndexConverter}}" />
                         <GridViewColumn Header="Ім'я гравця" Width="145" DisplayMemberBinding="{Binding GamerName}" />
                         <GridViewColumn Header="Розмірність поля" Width="100" DisplayMemberBinding="{Binding FieldSize}" />
                         <GridViewColumn Header="Найкращий час" Width="100" DisplayMemberBinding="{Binding BestTime}" />

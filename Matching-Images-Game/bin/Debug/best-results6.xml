@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<ArrayOfResult xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Result>
+    <GamerName>Богдан</GamerName>
+    <FieldSize>6x6</FieldSize>
+    <BestTime>76</BestTime>
+    <Points>179</Points>
+  </Result>
+  <Result>
+    <GamerName>Модест</GamerName>
+    <FieldSize>6x6</FieldSize>
+    <BestTime>98</BestTime>
+    <Points>168</Points>
+  </Result>
+  <Result>
+    <GamerName>Роман</GamerName>
+    <FieldSize>6x6</FieldSize>
+    <BestTime>77</BestTime>
+    <Points>157</Points>
+  </Result>
+  <Result>
+    <GamerName>Влад</GamerName>
+    <FieldSize>6x6</FieldSize>
+    <BestTime>86</BestTime>
+    <Points>152</Points>
+  </Result>
+</ArrayOfResult>
