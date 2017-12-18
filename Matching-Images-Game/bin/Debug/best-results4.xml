@@ -1,6 +1,18 @@
 <?xml version="1.0"?>
 <ArrayOfResult xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Result>
+    <GamerName>Гість</GamerName>
+    <FieldSize>4x4</FieldSize>
+    <BestTime>16</BestTime>
+    <Points>56</Points>
+  </Result>
+  <Result>
+    <GamerName>БОгдан</GamerName>
+    <FieldSize>4x4</FieldSize>
+    <BestTime>11</BestTime>
+    <Points>56</Points>
+  </Result>
+  <Result>
     <GamerName>Бодя</GamerName>
     <FieldSize>4x4</FieldSize>
     <BestTime>9</BestTime>
@@ -11,6 +23,18 @@
     <FieldSize>4x4</FieldSize>
     <BestTime>10</BestTime>
     <Points>54</Points>
+  </Result>
+  <Result>
+    <GamerName>Гість</GamerName>
+    <FieldSize>4x4</FieldSize>
+    <BestTime>13</BestTime>
+    <Points>54</Points>
+  </Result>
+  <Result>
+    <GamerName>Модест</GamerName>
+    <FieldSize>4x4</FieldSize>
+    <BestTime>13</BestTime>
+    <Points>53</Points>
   </Result>
   <Result>
     <GamerName>Коля</GamerName>
@@ -25,39 +49,15 @@
     <Points>50</Points>
   </Result>
   <Result>
-    <GamerName>Богдан</GamerName>
-    <FieldSize>4x4</FieldSize>
-    <BestTime>13</BestTime>
-    <Points>47</Points>
-  </Result>
-  <Result>
-    <GamerName>Вова</GamerName>
-    <FieldSize>4x4</FieldSize>
-    <BestTime>10</BestTime>
-    <Points>47</Points>
-  </Result>
-  <Result>
-    <GamerName>Вася</GamerName>
-    <FieldSize>4x4</FieldSize>
-    <BestTime>15</BestTime>
-    <Points>46</Points>
-  </Result>
-  <Result>
-    <GamerName>Роман</GamerName>
-    <FieldSize>4x4</FieldSize>
-    <BestTime>18</BestTime>
-    <Points>45</Points>
-  </Result>
-  <Result>
-    <GamerName>Модест</GamerName>
-    <FieldSize>4x4</FieldSize>
-    <BestTime>21</BestTime>
-    <Points>45</Points>
-  </Result>
-  <Result>
-    <GamerName>Соля</GamerName>
+    <GamerName>Бодя</GamerName>
     <FieldSize>4x4</FieldSize>
     <BestTime>14</BestTime>
-    <Points>44</Points>
+    <Points>49</Points>
+  </Result>
+  <Result>
+    <GamerName>Сергій</GamerName>
+    <FieldSize>4x4</FieldSize>
+    <BestTime>28</BestTime>
+    <Points>48</Points>
   </Result>
 </ArrayOfResult>

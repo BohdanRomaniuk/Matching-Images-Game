@@ -40,7 +40,7 @@ namespace Matching_Images_Game.MVVM
             }
             set
             {
-                if(value<=60)
+                if(value <= 60)
                 {
                     delayTime = value;
                 }
@@ -56,6 +56,10 @@ namespace Matching_Images_Game.MVVM
         {
             get
             {
+                if(string.IsNullOrEmpty(gamerName))
+                {
+                    MessageBox.Show("Імя користувача не задано","Помилка");
+                }
                 return gamerName;
             }
             set
@@ -68,7 +72,7 @@ namespace Matching_Images_Game.MVVM
         public MainViewModel()
         {
             DelayTime = 10;
-            GamerName = "Гість";
+            GamerName = "Гість";    
             StartGame = new RelayCommand(startGame);
             BestResults = new ObservableCollection<Result>();
             FieldSizes = new Dictionary<int, string>();
